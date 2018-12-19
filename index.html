@@ -44,31 +44,32 @@
 
         var wins = 0;
         var losses = 0;
-        var targetNumber = getRandomInt;
+        var targetNumber = 53;
+        // var endGame =
 
         // Works in getting and displaying random target number but causes issues ending the game
         // I think making it part of targetnumber var causing the issues
-        function getRandomInt(min, max) {
-            min = Math.ceil(10);
-            max = Math.floor(75);
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
+        // function getRandomInt(min, max) {
+        //     min = Math.ceil(10);
+        //     max = Math.floor(75);
+        //     return Math.floor(Math.random() * (max - min + 1)) + min;
+        // }
 
         $("#number-to-guess").append(targetNumber);
 
         var counter = 0;
-        var numberOptions = [10, 5, 3, 7];
+        var numberOptions = [10, 5, 3, 7]; //Values coming into the same order
+        // var imgOptions = ["assets\images\DRG.jpg", "assets\images\PLD.jpg", "assets\images\WAR.jpg", "assets\images\WHM.jpg"];
 
         //  Assigning points to each individial crystal pic
         for (var i = 0; i < numberOptions.length; i++) {
             var imageCrystal = $("<img>");
             imageCrystal.addClass("crystal-image");
-            // Need to get 3 different pictures in
-            imageCrystal.attr("src", "assets/images/DRG.jpg");
+            // Need to get 3 different pictures in each different value
+            imageCrystal.attr("src", "assets/images/DRG.jpg", "assets/images/PLD.jpg", "assets/images/WAR.jpg", "assets/images/WHM.jpg");
             imageCrystal.attr("data-crystalvalue", numberOptions[i]);
             $("#crystals").append(imageCrystal);
         }
-
 
 
         $(".crystal-image").on("click", function () {
@@ -80,14 +81,16 @@
 
             if (counter === targetNumber) {
                 alert("You win!");
-                // wins++;
-                // $("#wins").append(wins);
+                wins++;
+                $("#wins").append(wins);
             }
             else if (counter >= targetNumber) {
                 alert("You lose!!");
-                // losses++;
-                // $("#losses").text(losses);
+                losses++;
+                $("#losses").append(losses);
             }
+// Need to end game and restart
+
         });
 
     </script>
