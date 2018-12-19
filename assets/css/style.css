@@ -1,0 +1,19 @@
+.crystal-image {
+    width: 200px;
+    height: 200px;
+  }
+#number-to-guess {
+    border: 1px black solid;
+}
+#wins {
+    border: 1px black solid;
+}
+#losses {
+    border: 1px black solid;
+}
+#crystals {
+    border: 1px black solid;
+}
+#total-score {
+    border: 1px black solid;
+}

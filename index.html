@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets\css\reset.css">
+    <link rel="stylesheet" type="text/css" href="assets\css\style.css">
+</head>
+
+<body>
+    <div id="title">
+        <h1> Crystals Collector</h1>
+    </div>
+    <div id="instructions">
+        <p>You will be given a random number at the start of the game</p>
+        <p>There are four crystals below. By click on a crystal you will add a specific amount of points to your total
+            score.</p>
+        <p>You win the game by matching your total score to the random number, you lose the game if your total score
+            goes above the random number.</p>
+        <p>The value of each Crystal is hidden from you until you click on it.</p>
+        <p>Each time when the game starts, the game will change the values of each crystal.</p>
+    </div>
+
+    <div id="number-to-guess">Number to guess: </div>
+    <div id="wins">Wins: </div>
+    <div id="losses">Losses: </div>
+    <div id="crystals">
+    </div>
+    <div id="total-score">Total Score: </div>
+
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var wins = 0;
+        var losses = 0;
+        var targetNumber = getRandomInt;
+
+        // Works in getting and displaying random target number but causes issues ending the game
+        // I think making it part of targetnumber var causing the issues
+        function getRandomInt(min, max) {
+            min = Math.ceil(10);
+            max = Math.floor(75);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        $("#number-to-guess").append(targetNumber);
+
+        var counter = 0;
+        var numberOptions = [10, 5, 3, 7];
+
+        //  Assigning points to each individial crystal pic
+        for (var i = 0; i < numberOptions.length; i++) {
+            var imageCrystal = $("<img>");
+            imageCrystal.addClass("crystal-image");
+            // Need to get 3 different pictures in
+            imageCrystal.attr("src", "assets/images/DRG.jpg");
+            imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+            $("#crystals").append(imageCrystal);
+        }
+
+
+
+        $(".crystal-image").on("click", function () {
+            var crystalValue = ($(this).attr("data-crystalvalue"));
+            crystalValue = parseInt(crystalValue);
+            counter += crystalValue;
+            alert("New score: " + counter);
+            // $("#total-score").text(counter);
+
+            if (counter === targetNumber) {
+                alert("You win!");
+                // wins++;
+                // $("#wins").append(wins);
+            }
+            else if (counter >= targetNumber) {
+                alert("You lose!!");
+                // losses++;
+                // $("#losses").text(losses);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
