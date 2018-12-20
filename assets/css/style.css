@@ -1,19 +1,53 @@
 .crystal-image {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
 }
+
 #number-to-guess {
     border: 1px black solid;
+    border-radius: 15px;
+    background: #73AD21;
+    padding: 20px; 
 }
+
 #wins {
     border: 1px black solid;
+    border-radius: 15px;
+    background: #73AD21;
+    padding: 20px; 
 }
+
 #losses {
     border: 1px black solid;
+    border-radius: 15px;
+    background: #73AD21;
+    padding: 20px; 
 }
+
 #crystals {
     border: 1px black solid;
+    border-radius: 15px;
+    background: #73AD21;
+    padding: 20px; 
 }
+
 #total-score {
     border: 1px black solid;
+    border-radius: 15px;
+    background: #73AD21;
+    padding: 20px; 
+}
+
+h1 {
+    border: 1px black solid;
+    border-radius: 15px;
+    background: #73AD21;
+    padding: 20px; 
+}
+
+#instructions {
+    border: 1px black solid;
+    border-radius: 15px;
+    background: #73AD21;
+    padding: 20px; 
 }

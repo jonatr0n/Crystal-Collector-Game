@@ -33,8 +33,7 @@
     <div id="number-to-guess">Number to guess: </div>
     <div id="wins">Wins: </div>
     <div id="losses">Losses: </div>
-    <div id="crystals">
-    </div>
+    <div id="crystals"></div>
     <div id="total-score">Total Score: </div>
 
 
@@ -44,29 +43,27 @@
 
         var wins = 0;
         var losses = 0;
-        var targetNumber = 53;
-        // var endGame =
+        var targetNumber = getRandomInt();
+        var endGame = function () {
+            counter = 0;
+        }
 
-        // Works in getting and displaying random target number but causes issues ending the game
-        // I think making it part of targetnumber var causing the issues
-        // function getRandomInt(min, max) {
-        //     min = Math.ceil(10);
-        //     max = Math.floor(75);
-        //     return Math.floor(Math.random() * (max - min + 1)) + min;
-        // }
+        function getRandomInt(min, max) {
+            min = Math.ceil(10);
+            max = Math.floor(75);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
 
         $("#number-to-guess").append(targetNumber);
 
         var counter = 0;
         var numberOptions = [10, 5, 3, 7]; //Values coming into the same order
-        // var imgOptions = ["assets\images\DRG.jpg", "assets\images\PLD.jpg", "assets\images\WAR.jpg", "assets\images\WHM.jpg"];
+        var imgOptions = ["assets/images/DRG.jpg", "assets/images/PLD.jpg", "assets/images/WAR.jpg", "assets/images/WHM.jpg"];
 
-        //  Assigning points to each individial crystal pic
         for (var i = 0; i < numberOptions.length; i++) {
             var imageCrystal = $("<img>");
             imageCrystal.addClass("crystal-image");
-            // Need to get 3 different pictures in each different value
-            imageCrystal.attr("src", "assets/images/DRG.jpg", "assets/images/PLD.jpg", "assets/images/WAR.jpg", "assets/images/WHM.jpg");
+            imageCrystal.attr("src", imgOptions[i]);
             imageCrystal.attr("data-crystalvalue", numberOptions[i]);
             $("#crystals").append(imageCrystal);
         }
@@ -77,20 +74,20 @@
             crystalValue = parseInt(crystalValue);
             counter += crystalValue;
             alert("New score: " + counter);
-            // $("#total-score").text(counter);
+            $("#total-score").text("Current Score Count: " + counter);
 
             if (counter === targetNumber) {
                 alert("You win!");
                 wins++;
-                $("#wins").append(wins);
+                $("#wins").text("Wins: " + wins);
+                endGame();
             }
             else if (counter >= targetNumber) {
                 alert("You lose!!");
                 losses++;
-                $("#losses").append(losses);
+                $("#losses").text("Losses: " + losses);
+                endGame();
             }
-// Need to end game and restart
-
         });
 
     </script>
